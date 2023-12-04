@@ -12,47 +12,43 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
-        background-position: 0px 80px;
+        background-position: 0px 120px;
+      }
+
+      #logo {
+        width: 8%;
+        height: 8%;
+        margin: -20px;
       }
 
       @media screen and (max-width: 415px) {
         body {
           background-image: url("https://raw.githubusercontent.com/xxEasterGrymm/photo/main/b.png");
           background-repeat: no-repeat;
-          background-size: 405px 800px;
+          background-size: 412px 800px;
+          background-position: 0px 20px;
         }
 
         #form {
           background-color: #f9eeee;
         }
+
+        #logo {
+          width: 20%;
+          height: 20%;
+          margin: -15px;
+          margin-bottom: -10px;
+        }
       }
     </style>
   </head>
   <body>
-    <div
-      class="container bg-gray-900 mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-    >
-      <a
-        class="flex title-font font-medium items-center text-white mb-4 md:mb-0"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-          ></path>
-        </svg>
-        <span class="ml-3 text-xl">Fake File Classification</span>
+    <div class="container bg-gray-900 mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center" style="background-color: #f4eede;">
+      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <img id="logo" src="https://raw.githubusercontent.com/xxEasterGrymm/photo/main/logo.PNG"/>
+        <span class="ml-3 text-xl" style="color: #004aad;">Fake File Classification</span>
       </a>
     </div>
-
     <div class="flex items-center justify-center mt-6">
       <form
         id="form"
