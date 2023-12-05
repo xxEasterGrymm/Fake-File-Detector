@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Fake File Classification</title>
+    <style>
+      body {
+        background-color: #f4eede;
+        background-image: url("https://raw.githubusercontent.com/xxEasterGrymm/photo/main/a.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center 120px;
+      }
+
+      #logo {
+        width: 8%;
+        height: 8%;
+        margin: -20px;
+      }
+
+      @media screen and (max-width: 927px) {
+        body {
+          background-position: center 80px;
+          background-size: 800px 330px;
+        }
+
+        #form {
+          background-color: #f9eeee;
+        }
+      }
+
+      @media screen and (max-width: 428px) {
+        body {
+          background-image: url("https://raw.githubusercontent.com/xxEasterGrymm/photo/main/b.png");
+          background-repeat: no-repeat;
+          background-size: 412px 800px;
+          background-position: center 20px;
+        }
+
+        #form {
+          background-color: #f9eeee;
+        }
+
+        #logo {
+          width: 20%;
+          height: 20%;
+          margin: -15px;
+          margin-bottom: -10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="p-5 items-center" style="background-color: #f4eede;">
+      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <img id="logo" src="https://raw.githubusercontent.com/xxEasterGrymm/photo/main/logo.PNG"/>
+        <span class="ml-3 text-xl" style="color: #004aad;">Fake File Classification</span>
+      </a>
+    </div>
+    <div class="flex items-center justify-center mt-6">
+      <form
+        id="form"
+        action="/"
+        method="post"
+        enctype="multipart/form-data"
+        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
+        <div
+          class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+        >
+          <div class="text-center">
+            <svg
+              class="mx-auto h-12 w-12 text-gray-300"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <div class="mt-4 flex text-sm leading-6 text-gray-600">
+              <label
+                for="file_upload"
+                style="color: #004aad"
+                class="relative cursor-pointer rounded-md font-semibold focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+              >
+                <span>Upload a file</span>
+                <input
+                  id="file_upload"
+                  name="file_upload"
+                  type="file"
+                  class="sr-only"
+                  accept="*.*"
+                />
+              </label>
+              <p class="pl-1">or drag and drop</p>
+            </div>
+            <p class="text-xs leading-5 text-gray-600">atleast 1MB</p>
+          </div>
+        </div>
+
+        <label
+          class="block mb-2 text-sm font-medium text-gray-900"
+          for="file_type"
+          name="file_type"
+          >Select file type:</label
+        >
+        <select
+          name="file_type"
+          class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          style="background-color: #f4eede"
+        >
+          <option value="1">Video</option>
+          <option value="2">Audio</option>
+          <option value="3">Picture</option>
+          <option value="4">APK</option>
+        </select>
+        <div class="flex items-center justify-center">
+          <button
+            type="submit"
+            class="mt-6 bg-gray-700 text-black py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            style="background-color: #f4eede"
+            onclick="texToSpeech()"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center justify-center">
+      {% if result %}
+      <h2>Result:</h2>
+      <p id="result">{{ result }}</p>
+      {% endif %}
+    </div>
+  </body>
+  <script>
+    function texToSpeech() {
+      const message = new SpeechSynthesisUtterance();
+      message.text = document.getElementById("result").innerHTML;
+      const speechSynthesis = window.speechSynthesis;
+      speechSynthesis.speak(message);
+    }
+  </script>
+</html>
